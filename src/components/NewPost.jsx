@@ -1,22 +1,41 @@
-
+import { useState } from "react";
+import {MdAdd,MdClear} from "react-icons/md";
 import classes from "./NewPost.module.css"
 function NewPost(props){
+    const[author,setAuthor]=useState('')
+    const [body,setBody]=useState('')
+    function onAuthorChangeHandler(event){
+        setAuthor(event.target.value);
+    }
+
+    function onBodyChangeHandler(event){
+        setBody(event.target.value);
+    }
+    function formHandler(event){
+        event.preventDefault()
+        const formData={
+            author:author,
+            body:body,
+        };
+        props.onAddNewPost(formData)
+        console.log(formData)
+    }
         return(
         <>
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={formHandler}>
   <label>
     Name:
-    <input type="text" name="author" className={classes.inputField} onChange={props.onAuthorChange}/>
+    <input type="text"  className={classes.inputField} onChange={onAuthorChangeHandler}/>
   </label>
   <br />
   <label>
     Message:
-    <textarea name="message" rows="5" cols="30" className={classes.textareaField} onChange={props.onBodyChange}></textarea>
+    <textarea name="message" rows="5" cols="30" className={classes.textareaField} onChange={onBodyChangeHandler}></textarea>
   </label>
   <br />
-  <input type="submit" value="Submit" className={classes.submitButton}/>
+  <button className={classes.submitButton} onClick={props.onCancel}><MdAdd></MdAdd></button>
+
 </form>
-  {/* <button className={classes.submitButton} onClick={clickHandler}>Clicked me {count} times</button> */}
 
         </>
     );

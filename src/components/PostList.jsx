@@ -1,25 +1,20 @@
-import {useState} from "react"
+import { useState } from 'react';
 import Posts from './Posts'
 import classes from './PostList.module.css'
 import NewPost from './NewPost';
 function PostList(){
-    const[author,setAuthor]=useState('')
-    const [body,setBody]=useState('')
-    function onAuthorChangeHandler(event){
-        setAuthor(event.target.value);
-    }
-    function onBodyChangeHandler(event){
-        setBody(event.target.value);
-    }
+   const [posts,setPosts]=useState([])
+   function addNewPostHandler(formData){
+    // update the state if it depends on the previous state
+    setPosts((existingPosts)=>[formData,...existingPosts])
+   }
     return(
         <>
-        <NewPost onAuthorChange={onAuthorChangeHandler} onBodyChange={onBodyChangeHandler}/>
+        <NewPost onAddNewPost={addNewPostHandler}/>
         <ul className={classes.list}>
             <li>
-            <Posts name={author} body={body}/>
-            </li>
-            <li>
-            {/* <Posts name="Elon" body="Learn something new everyday and build knowledge for yourself!"/>     */}
+            {posts.map((post,index)=>
+            <Posts key={index} author={post.author} body={post.body}/>)}
             </li>
         </ul>
         </>
