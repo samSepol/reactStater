@@ -23,15 +23,13 @@ function NewPost(props){
         return(
         <>
     <form className={classes.form} onSubmit={formHandler}>
-  <label>
-    Name:
-    <input type="text"  className={classes.inputField} onChange={onAuthorChangeHandler}/>
-  </label>
+ 
+    <input type="text"  className={classes.inputField} onChange={onAuthorChangeHandler} placeholder="Enter Your Name"/>
+
   <br />
-  <label>
-    Message:
-    <textarea name="message" rows="5" cols="30" className={classes.textareaField} onChange={onBodyChangeHandler}></textarea>
-  </label>
+
+    <textarea name="message" rows="5" cols="30" className={classes.textareaField} onChange={onBodyChangeHandler} placeholder="Type your post...."></textarea>
+
   <br />
   <button className={classes.submitButton}><MdAdd></MdAdd></button>
 
