@@ -1,9 +1,9 @@
 import { useState } from "react";
-import {MdAdd,MdClear} from "react-icons/md";
+import {MdAdd} from "react-icons/md";
 import classes from "./NewPost.module.css"
 function NewPost(props){
     const[author,setAuthor]=useState('')
-    const [body,setBody]=useState('')
+    const[body,setBody]=useState('')
     function onAuthorChangeHandler(event){
         setAuthor(event.target.value);
     }
@@ -33,7 +33,7 @@ function NewPost(props){
     <textarea name="message" rows="5" cols="30" className={classes.textareaField} onChange={onBodyChangeHandler}></textarea>
   </label>
   <br />
-  <button className={classes.submitButton} onClick={props.onCancel}><MdAdd></MdAdd></button>
+  <button className={classes.submitButton}><MdAdd></MdAdd></button>
 
 </form>
 

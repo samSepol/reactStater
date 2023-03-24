@@ -11,7 +11,7 @@ import classes from "./Posts.module.css";
 function Posts(props){
 return(
     <div className={classes.post}>
-    <p className={classes.name}>Name:{props.name}</p>
+    <p className={classes.name}>Name:{props.author}</p>
     <p className={classes.tweet}>Tweet:{props.body}</p>
     </div>
 )
